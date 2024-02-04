@@ -1,0 +1,39 @@
+﻿@model EMS_MVC_04Feb2024.Models.Department.Department
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+</head>
+<body>
+    <form  method="post">
+        <div>
+            <table>
+                <tr>
+                    <th>Department Code</th>
+                    <td>
+                        @*<input type="text" name="DepartmentCode" />*@
+                        @*@Html.TextBox("DepartmentCode")*@
+                        @Html.TextBoxFor(x => x.DepartmentCode)
+                    </td>
+                </tr>
+                <tr>
+                    <th>Department Name</th>
+                    <td>
+                        @*<input type="text" name="DepartmentName" />*@
+                        @*@Html.TextBox("DepartmentName")*@
+                        @Html.TextBoxFor(x => x.DepartmentName)
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="submit" value="Save" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</body>
+</html>
