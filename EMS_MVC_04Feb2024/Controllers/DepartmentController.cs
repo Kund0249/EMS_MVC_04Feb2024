@@ -37,11 +37,17 @@ namespace EMS_MVC_04Feb2024.Controllers
         }
 
         [HttpPost]
-        public ViewResult Create(DepartmentModel department)
+        public ActionResult Create(DepartmentModel department)
         {
             //save
-            return View();
-            //return RedirectToAction("Index");
+            if(_repository.Save(department,out string Message))
+            {
+                TempData["Message"] = Message;
+                return RedirectToAction("Index");
+            }
+            ViewBag.Message = Message;
+            return View(department);
+            
         }
     }
 }

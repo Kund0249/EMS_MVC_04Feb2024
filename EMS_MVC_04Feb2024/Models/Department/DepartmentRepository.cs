@@ -2,21 +2,22 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using EMS_MVC_04Feb2024.Models;
 
 namespace EMS_MVC_04Feb2024.Models.Department
 {
     public class DepartmentRepository
     {
+        private readonly DataContext context;
+        public DepartmentRepository()
+        {
+            context = new DataContext();
+        }
         public List<DepartmentModel> Departments
         {
             get
             {
-                return new List<DepartmentModel>()
-            {
-                new DepartmentModel(){DepartmentId=1,DepartmentCode="IT",DepartmentName="Information Technology"},
-                new DepartmentModel(){DepartmentId=2,DepartmentCode="CS",DepartmentName="Computer Science"},
-                new DepartmentModel(){DepartmentId=3,DepartmentCode="BR",DepartmentName="Brokerage Management"}
-            };
+              return  context.Departments.ToList();
             }
 
         }
@@ -27,7 +28,18 @@ namespace EMS_MVC_04Feb2024.Models.Department
             try
             {
                 //save
+              var data =  context.Departments.SingleOrDefault(x => 
+                x.DepartmentCode == model.DepartmentCode 
+                || x.DepartmentName == model.DepartmentName);
 
+                if(data != null)
+                {
+                    Message = "Record already exist!";
+                    return false;
+                }
+                context.Departments.Add(model);
+                context.SaveChanges();
+                Message = "Record created sucessfully!";
                 return true;
             }
             catch (Exception ex)
