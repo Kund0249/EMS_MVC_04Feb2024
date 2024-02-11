@@ -6,9 +6,10 @@ using System.Web.Mvc;
 using System.Web.Script.Serialization;
 using EMS_MVC_04Feb2024.Models.Department;
 
+
 namespace EMS_MVC_04Feb2024.Controllers
 {
-    public class DepartmentController : Controller
+    public class DepartmentController : BaseController
     {
         //Declaration
         private readonly DepartmentRepository _repository;
@@ -40,12 +41,29 @@ namespace EMS_MVC_04Feb2024.Controllers
         public ActionResult Create(DepartmentModel department)
         {
             //save
-            if(_repository.Save(department,out string Message))
+            var JS = new JavaScriptSerializer();
+            if (_repository.Save(department,out string Message))
             {
-                TempData["Message"] = Message;
+
+                //var message = new
+                //{
+                //    Message = Message,
+                //    Title = "Record Save",
+                //    Type = "success"
+                //};
+
+                //TempData["Message"] = JS.Serialize(message);
+                Notify("Record Save", Message, MessagetType.success);
                 return RedirectToAction("Index");
             }
-            ViewBag.Message = Message;
+            //var _message = new
+            //{
+            //    Message = Message,
+            //    Title = "Error Occur",
+            //    Type = "error"
+            //};
+            //TempData["Message"] = JS.Serialize(_message);
+            Notify("Error Occur", Message, MessagetType.error);
             return View(department);
             
         }

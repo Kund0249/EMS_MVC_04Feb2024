@@ -1,0 +1,35 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>EMS</title>
+    <link href="~/Content/toastr/toastr.min.css" rel="stylesheet" />
+    <script src="~/Content/jquery/jquery.min.js"></script>
+    <script src="~/Content/toastr/toastr.min.js"></script>
+</head>
+<body>
+    <div id="TopMenu">
+        <h2>Menu Bar</h2>
+    </div>
+    <div id="Content">
+        @RenderBody()
+    </div>
+    <div id="Footer">
+        <h2>Footer Section</h2>
+    </div>
+    @RenderSection("ClientScript", false)
+
+    <script>
+             var data = @(TempData["Message"] != null? Html.Raw(TempData["Message"]) : Html.Raw("undefined"));
+            if (data) {
+                toastr[data.Type](data.Message, data.Title)
+                }
+    </script>
+</body>
+</html>
