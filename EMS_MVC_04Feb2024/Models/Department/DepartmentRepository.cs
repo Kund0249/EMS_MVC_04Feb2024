@@ -22,6 +22,10 @@ namespace EMS_MVC_04Feb2024.Models.Department
 
         }
 
+        public DepartmentModel Find(int Id)
+        {
+           return context.Departments.FirstOrDefault(x => x.DepartmentId == Id);
+        }
         public bool Save(DepartmentModel model,out string Message)
         {
             Message = string.Empty;
@@ -55,8 +59,17 @@ namespace EMS_MVC_04Feb2024.Models.Department
             try
             {
                 //save
-
-                return true;
+               var department = context.Departments.SingleOrDefault(x => x.DepartmentId == model.DepartmentId);
+                if(department != null)
+                {
+                    department.DepartmentCode = model.DepartmentCode;
+                    department.DepartmentName = model.DepartmentName;
+                    context.SaveChanges();
+                    Message = "Department Updated";
+                    return true;
+                }
+                Message = "Department Not Found!";
+                return false;
             }
             catch (Exception ex)
             {

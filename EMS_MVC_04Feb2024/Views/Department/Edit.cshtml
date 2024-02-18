@@ -1,0 +1,35 @@
+﻿@model EMS_MVC_04Feb2024.Models.Department.DepartmentModel
+
+
+<div class="row">
+    <div class="col-md-6 offset-3">
+        <form method="post">
+            <div>
+                @Html.HiddenFor(x => x.DepartmentId)
+                <table class="table">
+                    <tr>
+                        <th>Department Code</th>
+                        <td>
+                            @*<input type="text" name="DepartmentCode" />*@
+                            @*@Html.TextBox("DepartmentCode")*@
+                            @Html.TextBoxFor(x => x.DepartmentCode)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Department Name</th>
+                        <td>
+                            @*<input type="text" name="DepartmentName" />*@
+                            @*@Html.TextBox("DepartmentName")*@
+                            @Html.TextBoxFor(x => x.DepartmentName)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <input type="submit" value="Save" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </form>
+    </div>
+</div>

@@ -67,5 +67,32 @@ namespace EMS_MVC_04Feb2024.Controllers
             return View(department);
             
         }
+
+
+       public ActionResult Edit(int id)
+        {
+           var Department = _repository.Find(id);
+            if(Department != null)
+               return View(Department);
+
+            Notify("Not Found", $"Department with id : {id} not found", MessagetType.warrning);
+            return RedirectToAction(nameof(Index));
+        }
+
+        [HttpPost]
+        public ActionResult Edit(DepartmentModel model)
+        {
+           if(_repository.Update(model,out string message))
+            {
+                Notify("Record Updated",message, MessagetType.success);
+            }
+            else
+            {
+                Notify("Record not Updated", message, MessagetType.error);
+            }
+
+           // Notify("Not Found", $"Department with id : {id} not found", MessagetType.warrning);
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

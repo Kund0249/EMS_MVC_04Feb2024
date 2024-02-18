@@ -1,0 +1,16 @@
+﻿@model EMS_MVC_04Feb2024.Models.Department.DepartmentModel
+
+<tr>
+    @*<td>@Model.DepartmentId</td>*@
+    <td>@Model.DepartmentCode</td>
+    <td>@Model.DepartmentName</td>
+    <td>
+        @using (Html.BeginForm("Delete","Department",new {id = Model.DepartmentId},FormMethod.Post))
+        {
+              <div class="btn-group" role="group">
+                  @Html.ActionLink("Modify", "Edit", "Department", new { id = Model.DepartmentId }, new {@class="btn btn-sm btn-primary"})
+                   <input type="submit" value="Remove" class="btn btn-sm btn-danger" />
+              </div>
+            }
+    </td>
+</tr>

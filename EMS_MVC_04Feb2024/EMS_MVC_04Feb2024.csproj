@@ -95,6 +95,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\css\bootstrap.css" />
     <Content Include="Content\jquery\jquery.min.js" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\toastr\toastr.min.css" />
@@ -122,6 +123,10 @@
     <Content Include="Views\Department\Create.cshtml" />
     <Content Include="Views\Shared\_MasterLayout.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Notification.cshtml" />
+    <Content Include="Views\Shared\_NavigationMenu.cshtml" />
+    <Content Include="Views\Department\_DepartmentList.cshtml" />
+    <Content Include="Views\Department\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
