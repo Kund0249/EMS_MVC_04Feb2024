@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using EMS_MVC_04Feb2024.Models.Employee;
 
 namespace EMS_MVC_04Feb2024.Models.Department
 {
@@ -18,5 +19,10 @@ namespace EMS_MVC_04Feb2024.Models.Department
 
         //[Column("DepartmentName")]
         public string DepartmentName { get; set; }
+
+        //Navigation Properties
+        public ICollection<EmployeeModel> Employees { get; set; }
+
+
     }
 }

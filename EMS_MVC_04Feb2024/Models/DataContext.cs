@@ -14,5 +14,6 @@ namespace EMS_MVC_04Feb2024.Models
         }
 
         public DbSet<Department.DepartmentModel> Departments { get; set; }
+        public DbSet<Employee.EmployeeModel> Employees { get; set; }
     }
 }

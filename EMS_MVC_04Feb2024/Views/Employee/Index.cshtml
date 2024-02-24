@@ -1,0 +1,40 @@
+﻿@model IEnumerable<EMS_MVC_04Feb2024.Models.Employee.EmployeeModel>
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<h2>Index</h2>
+
+<div class="row">
+    <div class="col-md-8 offset-2">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Gender</th>
+                    <th>Mob No</th>
+                    <th>Email Address</th>
+                    <th>DOJ</th>
+                    <th>Salary</th>
+                    <th>Bank Acc</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.Gender</td>
+                    <td>@item.ContactNo</td>
+                    <td>@item.EmailAddress</td>
+                    <td>@item.DOJ</td>
+                    <td>@item.Salary</td>
+                    <td>@item.BankAccountNo</td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
