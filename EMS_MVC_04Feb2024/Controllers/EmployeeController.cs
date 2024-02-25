@@ -40,7 +40,39 @@ namespace EMS_MVC_04Feb2024.Controllers
         [HttpPost]
         public ActionResult Create(EmployeeModel  model)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                //Realative Path
+                string Folder = "~/EmpImages";
+                string guidId = Guid.NewGuid().ToString();
+                string FileName = guidId + "_" + model.ImageFile.FileName;
+                string ImagePath = System.IO.Path.Combine(Server.MapPath(Folder), FileName);
+                model.ImageFile.SaveAs(ImagePath);
+                model.ProfileImage = FileName;
+
+                //string extension = System.IO.Path.GetExtension(FileName);
+                //int contentlength = model.ImageFile.ContentLength; //Ikb = 1024 byte ,1MB = 1024KB => 2*1024*1024
+                //if(contentlength <= (2 * 1024 * 1024))
+                //{
+                //    model.ImageFile.SaveAs(ImagePath);
+                //    model.ProfileImage = FileName;
+                //}
+
+                if(repository.Add(model,out string message))
+                {
+                    Notify("Success", message, MessagetType.success);
+                    return RedirectToAction(nameof(Index));
+                }
+                Notify("Error", message, MessagetType.error);
+            }
+            Notify("Warrining", "Please upload profile Image", MessagetType.warrning);
+            model.Departments = Drepository.Departments.
+                                   Select(x => new SelectListItem()
+                                   {
+                                       Text = x.DepartmentName,
+                                       Value = x.DepartmentId.ToString()
+                                   }).ToList();
+            return View(model);
         }
     }
 }

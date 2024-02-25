@@ -6,6 +6,7 @@
             <div class="mt-3">
                 <label class="form-label">Full Name</label>
                 @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Name,"",new {@class = "text-danger" })
             </div>
             <div class="mt-3">
 
@@ -23,17 +24,21 @@
                             Female
                         </label>
                     </div>
+
+                    @Html.ValidationMessageFor(x => x.Gender, "", new { @class = "text-danger" })
                 </div>
             </div>
 
             <div class="mt-3">
                 <label class="form-label">Mobile No.</label>
                 @Html.TextBoxFor(x => x.ContactNo, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.ContactNo, "", new { @class = "text-danger" })
             </div>
 
             <div class="mt-3">
                 <label class="form-label">Email Address</label>
                 @Html.TextBoxFor(x => x.EmailAddress, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.EmailAddress, "", new { @class = "text-danger" })
             </div>
             <div class="mt-3">
                 <label class="form-label">DOJ</label>
@@ -43,6 +48,7 @@
             <div class="mt-3">
                 <label class="form-label">Salary</label>
                 @Html.TextBoxFor(x => x.Salary, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Salary, "", new { @class = "text-danger" })
             </div>
 
             <div class="mt-3">
@@ -56,9 +62,10 @@
           },
           "Select Department"
         ,new { @class = "form-control" })*@
-                @Html.DropDownListFor(x => x.DepartmentId,Model.Departments,
+                @Html.DropDownListFor(x => x.DepartmentId, Model.Departments,
                 "Select Department"
               , new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.DepartmentId, "", new { @class = "text-danger" })
             </div>
 
             <div class="mt-3">
@@ -69,6 +76,7 @@
             <div class="mt-3">
                 <label class="form-label">Profile Image</label>
                 @Html.TextBoxFor(x => x.ImageFile, new { @class = "form-control", type = "file" })
+                @Html.ValidationMessageFor(x => x.ImageFile, "", new { @class = "text-danger" })
             </div>
 
             <div class="mt-3">

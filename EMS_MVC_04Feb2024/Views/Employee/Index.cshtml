@@ -1,4 +1,4 @@
-﻿@model IEnumerable<EMS_MVC_04Feb2024.Models.Employee.EmployeeModel>
+﻿@model IEnumerable<EMS_MVC_04Feb2024.Models.Employee.EmployeeVM>
 @{
     ViewBag.Title = "Index";
 }
@@ -11,6 +11,7 @@
         <table class="table">
             <thead>
                 <tr>
+                    <th></th>
                     <th>Name</th>
                     <th>Gender</th>
                     <th>Mob No</th>
@@ -24,6 +25,18 @@
                 @foreach (var item in Model)
                 {
                 <tr>
+                    <td>
+                        @if (item.ProfileImage != "")
+                        {
+                            <img src="@Url.Content(item.ProfileImage)" alt="Profile Image" class="PPImage" />
+
+                        }
+                        else
+                        {
+                            <img src="" alt="Profile Image" class="PPImage" />
+
+                        }
+                    </td>
                     <td>@item.Name</td>
                     <td>@item.Gender</td>
                     <td>@item.ContactNo</td>
@@ -37,4 +50,12 @@
         </table>
     </div>
 </div>
+
+<style>
+    .PPImage{
+        height:100px;
+        width:100px;
+        border-radius : 50px;
+    }
+</style>
 
