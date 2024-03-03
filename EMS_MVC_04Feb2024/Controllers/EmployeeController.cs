@@ -20,11 +20,13 @@ namespace EMS_MVC_04Feb2024.Controllers
             Drepository = new DepartmentRepository();
         }
         // GET: Employee
+        //[Route("Employee")]
         public ActionResult Index()
         {
             return View(repository.GetEmployees);
         }
 
+      //  [Route("Employee/add")]
         [HttpGet]
        public ActionResult Create()
         {

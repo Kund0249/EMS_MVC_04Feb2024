@@ -1,3 +1,4 @@
+using EMS_MVC_04Feb2024.App_Start;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,8 @@ namespace EMS_MVC_04Feb2024
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            //GlobalFilters.Filters.Add(new HandleErrorAttribute());
+            FilterConfig.RegisterFilters();
         }
     }
 }

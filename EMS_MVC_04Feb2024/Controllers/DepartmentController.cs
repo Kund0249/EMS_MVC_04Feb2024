@@ -9,6 +9,8 @@ using EMS_MVC_04Feb2024.Models.Department;
 
 namespace EMS_MVC_04Feb2024.Controllers
 {
+    //[HandleError]
+    [Authorize]
     public class DepartmentController : BaseController
     {
         //Declaration
@@ -25,9 +27,12 @@ namespace EMS_MVC_04Feb2024.Controllers
         //Department/GetDepartment
 
         [HttpGet]
+        [OutputCache(Duration =30)]
+        //[HandleError]
         public ViewResult Index()
         {
             List<DepartmentModel> departments = _repository.Departments;
+            //throw new Exception("There is custom error");
             return View("GetDepartment", departments);
         }
 
