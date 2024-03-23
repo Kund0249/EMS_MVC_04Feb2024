@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using System.Web.Optimization;
 
 namespace EMS_MVC_04Feb2024
 {
@@ -16,6 +17,7 @@ namespace EMS_MVC_04Feb2024
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             //GlobalFilters.Filters.Add(new HandleErrorAttribute());
             FilterConfig.RegisterFilters();
+            BundlingConfig.RegisterBundle(BundleTable.Bundles);
         }
     }
 }
